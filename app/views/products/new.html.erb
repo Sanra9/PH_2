@@ -1,0 +1,22 @@
+<div class = "container">
+    <div class = "row">
+        <div class = "col-sm-6 offset-sm-3">
+                <h1>Publicar Producto</h1>
+            <%= form_for @product do |f| %>
+                <div class = "mb-3">
+                 <%= f.text_field :name, class: "form-control input-lg", placeholder: "Ingresar el nombre del producto" %>
+                </div>
+                <div class = "mb-3">
+                 <%= f.url_field :url, class: "form-control input-lg", placeholder: "Ingresar la URL del producto" %>
+                </div>
+                <div class = "mb-3">
+                 <%= f.text_area :description, class: "form-control input-lg", placeholder: "Ingresar la descripción del producto" %>
+                </div>
+                <div class ="mb-3 d-grid gap-2">
+                <%= f.submit "Publicar Producto", class: "btn btn-primary btn-lg btn-block" %>
+                </div>
+            <% end %>
+        </div>
+    </div>
+</div>
+
