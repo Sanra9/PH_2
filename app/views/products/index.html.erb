@@ -9,7 +9,7 @@
 
             <h2>Productos</h2>
             <div class="text-end mb-3">
-                <%= link_to "Publicar Producto", new_product_path, class: "btn btn-primary" %>
+                <%= link_to "Publicar Producto", new_product_path, class: "btn btn-outline-primary" %>
             </div>
             <table class = "table">
             <tr class = "table-dark color: white">
@@ -17,13 +17,15 @@
                 <th>Nombre</th>
                 <th>URL</th>
                 <th>Descripción</th>
+                <th></th>
             </tr>
             <% @products.each do |product| %>
                 <tr>
                 <td><%= product.id %></td>
-                <td><%= product.name %></td>
+                <td><%= link_to product.name, product, class: "btn btn-sm btn-outline-info" %></td>
                 <td><%= product.url %></td>
                 <td><%= product.description %></td>
+                <td><%= link_to "Editar", edit_product_path(product), class: "btn btn-outline-warning" %></td>
                 </tr>
             <% end %>
             </table>
