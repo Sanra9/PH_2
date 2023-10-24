@@ -10,11 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_10_20_140100) do
+ActiveRecord::Schema[7.1].define(version: 2023_10_24_150007) do
   create_table "products", force: :cascade do |t|
     t.string "name"
     t.string "url"
     t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "email", limit: 100
+    t.string "password_digest"
+    t.string "name", limit: 100
+    t.string "twitter_handle", limit: 50
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
