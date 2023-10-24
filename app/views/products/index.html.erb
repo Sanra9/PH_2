@@ -1,6 +1,6 @@
 <div class = "container-fluid p-5 bg-primary text-white text-center">
-    <h1>My First Booststrap Page</h1>
-    <p>Resize this responsive page to see the effect!</p>
+    <h1>Smart Incubator Traceability App</h1>
+    <p>A choose safe device!</p>
 </div>
 
 <div class = "container"
@@ -22,19 +22,18 @@
             <% @products.each do |product| %>
                 <tr>
                 <td><%= product.id %></td>
-                <td><%= link_to product.name, product, class: "btn btn-sm btn-outline-info" %></td>
+                <td><%= link_to product.name, product_path(product), class: "btn btn-sm btn-outline-info" %></td>
                 <td><%= product.url %></td>
                 <td><%= product.description %></td>
-                <td><%= link_to "Editar", edit_product_path(product), class: "btn btn-outline-warning" %></td>
+                <td>
+                <div class="d-flex justify-content-around">
+                    <%= link_to ("<i class='bi bi-pencil-square'></i>").html_safe, edit_product_path(product), class: "btn btn-outline-warning" %>
+                    <%= button_to ("<i class='bi bi-trash'></i>").html_safe, product_path(product), method: :delete, data: { turbo_confirm: "¿Estás seguro de eliminar este producto?" }, class:"btn btn-outline-danger" %>
+                </div>
+                </td>
                 </tr>
             <% end %>
             </table>
         </div>
     </div>
 </div>
-
-<i class="bi-alarm"></i>
-<i class="bi-alarm"></i>
-<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-1-circle-fill" viewBox="0 0 16 16">
-  <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0ZM9.283 4.002H7.971L6.072 5.385v1.271l1.834-1.318h.065V12h1.312V4.002Z"/>
-</svg>
