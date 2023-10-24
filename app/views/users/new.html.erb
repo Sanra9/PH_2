@@ -1,0 +1,40 @@
+<div class="container">
+ <div class="row">
+  <div class="col-sm-6 offset-sm-3">
+   <h1>Crear Cuenta</h1>
+
+    
+        <% if @errors %>
+        <div class="alert alert-danger" role="alert">
+            <ul>
+            <% @errors.each do |error| %>
+                <li> <%= error %> </li>
+            <% end %>
+            </ul>
+        </div>
+        <% end %>
+      
+
+   <%= form_for @user do |f| %>
+    <div class="mb-3">
+     <%= f.email_field :email, class: "form-control mb-3 input-group-sm", placeholder: "Email" %>
+    </div>
+    <div class="mb-3">
+     <%= f.password_field :password, class: "form-control mb-3 input-group-lg", placeholder: "Contraseña" %>
+    </div> 
+    <div class="mb-3">
+     <%= f.text_field :name, class: "form-control mb-3 input-group-lg", placeholder: "Nombre" %>
+    </div>
+    <div class="input-group mb-3">
+     <span class="input-group-text">@</span>
+     <%= f.text_field :twitter_handle, class: "form-control", placeholder: "Twitter" %>
+     </div>
+    <div class="mb-3 d-grid gap-2">
+     <%= f.submit class: "btn btn-primary btn-block btn-lg" %>
+    </div>
+   <% end %>
+  </div>
+ </div>
+</div>
+
+      
