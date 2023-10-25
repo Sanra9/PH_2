@@ -8,16 +8,20 @@
         <div class = "col-ms-12">
 
             <h2>Productos</h2>
-            <div class="text-end mb-3">
+            <% if signed_in? %>
+             <div class="text-end mb-3">
                 <%= link_to ("<i class='bi bi-plus-circle-fill'></i>  Publicar Producto").html_safe, new_product_path, class: "btn btn-outline-primary" %>
-            </div>
+             </div>
+             <% end %>
             <table class = "table">
             <tr class = "table-dark color: white">
                 <th>Id</th>
                 <th>Nombre</th>
                 <th>URL</th>
                 <th>Descripción</th>
-                <th></th>
+                <% if signed_in? %>
+                    <th></th>
+                <% end %>
             </tr>
             <% @products.each do |product| %>
                 <tr>
@@ -25,12 +29,14 @@
                 <td><%= link_to product.name, product_path(product), class: "btn btn-sm btn-outline-info" %></td>
                 <td><%= product.url %></td>
                 <td><%= product.description %></td>
-                <td>
-                <div class="d-flex justify-content-around">
-                    <%= link_to ("<i class='bi bi-pencil-square'></i>").html_safe, edit_product_path(product), class: "btn btn-outline-warning" %>
-                    <%= button_to ("<i class='bi bi-trash'></i>").html_safe, product_path(product), method: :delete, data: { turbo_confirm: "¿Estás seguro de eliminar este producto?" }, class:"btn btn-outline-danger" %>
-                </div>
-                </td>
+                <% if signed_in? %>
+                    <td>
+                        <div class="d-flex justify-content-around">
+                            <%= link_to ("<i class='bi bi-pencil-square'></i>").html_safe, edit_product_path(product), class: "btn btn-outline-warning" %>
+                            <%= button_to ("<i class='bi bi-trash'></i>").html_safe, product_path(product), method: :delete, data: { turbo_confirm: "¿Estás seguro de eliminar este producto?" }, class:"btn btn-outline-danger" %>
+                        </div>
+                    </td>
+                <% end %>
                 </tr>
             <% end %>
             </table>
