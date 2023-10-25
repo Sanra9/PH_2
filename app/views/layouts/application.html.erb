@@ -12,6 +12,9 @@
   </head>
 
   <body>
+  <% if signed_in? %>
+    <div>Hola <%= current_user.name %></div>
+  <% end %>
   <% if flash[:notice] %>
       <div class="alert alert-info alert-dismissible fade show" role="alert">
         <%= flash[:notice] %> 
