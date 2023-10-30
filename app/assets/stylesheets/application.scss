@@ -1,1 +1,8 @@
- @import "bootstrap";
+  @import "bootstrap";
+ 
+ .navbar-nav > a.avatar {
+    padding-top: 7px;
+    padding-bottom: 7px;
+    img { width: 37px; border-radius: 50%;}
+  }
+  
