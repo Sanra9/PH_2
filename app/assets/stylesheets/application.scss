@@ -1,1 +1,9 @@
- @import "bootstrap";
+  @import "bootstrap";
+  @import "products";
+ 
+ .navbar-nav > a.avatar {
+    padding-top: 7px;
+    padding-bottom: 7px;
+    img { width: 37px; border-radius: 50%;}
+  }
+  

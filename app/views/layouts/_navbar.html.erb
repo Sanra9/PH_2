@@ -1,0 +1,40 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container">    
+    <%= link_to "Smart Incubator", root_path, class: "navbar-brand" %>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse me-auto mb-lg-0" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0"> 
+      </ul>
+      <form class="d-flex" role="search">
+        <input class="form-control me-2" type="text" placeholder="Search">
+      </form>
+      <ul class="navbar-nav">
+      <% if signed_in? %>
+      <li class="nav navbar-nav nav-item dropdown">
+          <a class="nav-link dropdown-toggle avatar" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+          <img src="<%= Gravatar.new("#{current_user.email}").image_url %>"  />
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+            <li><%= link_to "Salir", logout_path, data: { "turbo-method": :delete }, class:"dropdown-item" %></li>
+          </ul>
+          </li>
+          <li class="nav-item">
+            <%= link_to "<span class=' badge rounded-pill bg-danger'>+</span>".html_safe, new_product_path %>
+          </li>  
+        <% else %>
+            
+             <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+              <%= link_to 'Registrarse', new_user_path, method: :get, class:"btn btn-primary", type:"button" %>
+              <%= link_to 'Iniciar Sesión', login_path, method: :get, class:"btn btn-outline-primary", type:"button"  %>
+             </div>
+            
+        <% end %>
+          </ul>
+     
+   </div>
+  </div>
+  
+</nav>
