@@ -16,7 +16,8 @@ class ProductsController < ApplicationController
       if @product.save
         redirect_to products_path, notice: 'El producto fue publicado con éxito.'
       else
-        render :new
+        @errors = @product.errors.full_messages
+        render :new, status: 244
       end
     end
 
