@@ -1,21 +1,27 @@
 <div class="product-page">
-  <header class="product-header">
-    <h1><%= @product.name %></h1>
-    <p><%= @product.description %></p>
-    <a href="<%= @product.url %>" class="btn btn-primary btn-lg" target="_blank">¡Obtenlo!</a>
-  </header>
+	<header class="product-header">
+		<h1><%= @product.name %></h1>
+		<p><%= @product.description %></p>
+		<a href="<%= @product.url %>" class="btn btn-primary btn-lg" target="_blank">¡Obtenlo!</a>
+		<% if signed_in? && @product.user == current_user %>
+		<div class="actions">
+			<%= link_to ("<i class='bi bi-pencil-square'></i>").html_safe, edit_product_path(@product), class: "btn btn-outline-warning" %>
+			<%= link_to ("<i class='bi bi-trash'></i>").html_safe, product_path(@product), data: { turbo_method: :delete, turbo_confirm: "¿Estás seguro de eliminar este producto?" }, class:"btn btn-outline-danger" %>
+		</div>
+		<% end %>
+	</header>
 
-  <div class="container">
-    <div class="row">
-      <div class="col-sm-10 col-sm-offset-1">
-        <div class="votes">
-          <h2>Votos</h2>
-        </div>
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-10 col-sm-offset-1">
+				<div class="votes">
+					<h2>Votos</h2>
+				</div>
 
-        <div class="comments">
-          <h2>Comentarios</h2>
-        </div>
-      </div>
-    </div>
-  </div>
+				<div class="comments">
+					<h2>Comentarios</h2>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
