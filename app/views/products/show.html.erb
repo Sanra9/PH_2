@@ -20,6 +20,26 @@
 
 				<div class="comments">
 					<h2>Comentarios</h2>
+					<% @product.comments.each do |comment| %>
+						<div class='card product-comments' %>
+						 <div class="card-header">
+						  <header class="panel-heading"><img src="<%= Gravatar.new("#{comment.user.email}").image_url %>" class="img-circle" /> <%= comment.user.name %></header>
+						 </div>
+							<div class="card-body"><%= comment.body %></div>
+						</div>
+					<% end %>
+
+					<% if signed_in? %>
+						<%= form_for [@product, @product.comments.build] do |f| %>
+							<div class="form-group">
+								<%= f.text_area :body, class: "form-control", holderplace: "Agregar comentario" %>
+							</div>
+
+							<div class="actions text-end">
+								<%= f.submit "Comentar", class:"btn btn-primary" %>
+							</div>
+						<% end %>
+					<% end %>
 				</div>
 			</div>
 		</div>

@@ -65,3 +65,21 @@
     &:hover { color: white; }
   }
 }
+
+.product-comments {
+ 
+  
+  margin: 10px;
+
+  .glyphicon { font-size: 21px; }
+  .comment-count {
+    margin-left: 15px;
+    font-size: 18px;
+    vertical-align: text-bottom;
+  }
+}
+
+.img-circle {
+  width: 37px; 
+  border-radius: 50%;
+}

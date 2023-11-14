@@ -22,7 +22,9 @@ Rails.application.routes.draw do
   delete 'logout', to: 'sessions#destroy'
 
 
-  resources :products
+  resources :products do
+    resources :comments, only: [:create]
+  end
   resources :users, only: [:new, :create]
   
 
