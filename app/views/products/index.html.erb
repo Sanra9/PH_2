@@ -16,6 +16,7 @@
             <table class = "table">
             <tr class = "table-dark color: white">
                 <th>Id</th>
+                <th class="text-center">Comentarios</th>
                 <th>Nombre</th>
                 <th>URL</th>
                 <th>Descripción</th>
@@ -26,6 +27,12 @@
             <% @products.each do |product| %>
                 <tr>
                 <td><%= product.id %></td>
+                <td>
+                  <div class="text-center">
+                    <%= product.comments.count %>
+                    <i class="bi bi-chat-left-dots-fill"></i>
+                  </div>
+                </td>
                 <td><%= link_to product.name, product_path(product), class: "btn btn-sm btn-outline-info" %></td>
                 <td><%= product.url %></td>
                 <td><%= product.description %></td>
