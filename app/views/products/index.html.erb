@@ -17,6 +17,7 @@
             <tr class = "table-dark color: white">
                 <th>Id</th>
                 <th class="text-center">Comentarios</th>
+                <th class="text-center">Votos</th>
                 <th>Nombre</th>
                 <th>URL</th>
                 <th>Descripción</th>
@@ -32,6 +33,22 @@
                     <%= product.comments.count %>
                     <i class="bi bi-chat-left-dots-fill"></i>
                   </div>
+                </td>
+                <td>
+                 <div class="text-center">
+                  <% if product.voted_by? current_user %>
+                    <%= link_to product_vote_path(product), data: { turbo_method: :delete }, class: "product-upvote upvote-active" do %>
+                        <span class="upvote-arrow"></span>
+                        <span class="upvote-count"><%= product.votes.count %></span> 
+                    <% end %>
+                  <% else %>
+                   <%= link_to product_vote_path(product), data: { turbo_method: :post }, class:"product-upvote" do %>
+                    <span class="upvote-arrow"></span>
+                    <span class="upvote-count"><%= product.votes.count %></span>
+                    <span class="upvote-arrow"></span>
+                   <% end %>
+                 <% end %>
+                 </div>
                 </td>
                 <td><%= link_to product.name, product_path(product), class: "btn btn-sm btn-outline-info" %></td>
                 <td><%= product.url %></td>
