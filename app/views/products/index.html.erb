@@ -19,6 +19,7 @@
                 <th class="text-center">Comentarios</th>
                 <th class="text-center">Votos</th>
                 <th>Nombre</th>
+                <th>Image</th>
                 <th>URL</th>
                 <th>Descripción</th>
                 <% if signed_in? %>
@@ -51,6 +52,13 @@
                  </div>
                 </td>
                 <td><%= link_to product.name, product_path(product), class: "btn btn-sm btn-outline-info" %></td>
+                <td>
+                    <% if product.photo.attached? %>
+                    <div class="product-img">
+                        <%= image_tag product.photo.variant(:thumb) %>
+                    </div>
+                    <% end %>
+                </td>
                 <td><%= product.url %></td>
                 <td><%= product.description %></td>
                 <% if signed_in? %>

@@ -112,10 +112,18 @@
     margin-top: 18px;
   }
 
+
   &:hover .upvote-arrow { border-bottom: #f04500; }
 
   &.upvote-active {
     .upvote-arrow { border-bottom-color: #f04500; }
     .upvote-count { color: #f04500; }
   }
+}
+
+.product-img {
+  float: left;
+  margin-right: 30px;
+
+  img { border-radius: 3px; }
 }
